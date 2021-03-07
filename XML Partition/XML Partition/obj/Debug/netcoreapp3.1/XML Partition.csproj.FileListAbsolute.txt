@@ -1,0 +1,13 @@
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\bin\Debug\netcoreapp3.1\XML Partition.exe
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\bin\Debug\netcoreapp3.1\XML Partition.deps.json
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\bin\Debug\netcoreapp3.1\XML Partition.runtimeconfig.json
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\bin\Debug\netcoreapp3.1\XML Partition.runtimeconfig.dev.json
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\bin\Debug\netcoreapp3.1\XML Partition.dll
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\bin\Debug\netcoreapp3.1\XML Partition.pdb
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\obj\Debug\netcoreapp3.1\XML Partition.csprojAssemblyReference.cache
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\obj\Debug\netcoreapp3.1\XML Partition.AssemblyInfoInputs.cache
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\obj\Debug\netcoreapp3.1\XML Partition.AssemblyInfo.cs
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\obj\Debug\netcoreapp3.1\XML Partition.csproj.CoreCompileInputs.cache
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\obj\Debug\netcoreapp3.1\XML Partition.dll
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\obj\Debug\netcoreapp3.1\XML Partition.pdb
+D:\ENSC 1A\Projet Transdi\Transcription XML\XML Partition\XML Partition\obj\Debug\netcoreapp3.1\XML Partition.genruntimeconfig.cache
