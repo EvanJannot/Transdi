@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,8 +51,6 @@ namespace XML_Partition
                     essaiBis += essai[m];
                     m++; //m devrait permettre de supprimer de essai tout ce qui a été enregistré puis analysé dans essaiBis, donc qui n'est plus utile de garder
                 }
-
-                Console.WriteLine("m ="+ m); //test
 
                 //verification de la présence d'une ou plusieurs balises de début qui nous intéresse (ex : <mesure ...>, <beats>, ...)
                 if (essaiBis.Contains(part))
@@ -190,10 +188,7 @@ namespace XML_Partition
                     //essai.Remove(essai.IndexOf(type_end), 6); //enlève la balise de fermeture pour ne pas bloquer la boucle
                     //essai.Remove(essai.IndexOf(type), 6 + cpt);
                 }
-                Console.WriteLine(" "+essai[0]+" "+essai[1]+" "+essai[2]); //test
-                essai.Remove(0, m-1);
-                Console.WriteLine(" "+essai[0]+" "+essai[1]+" "+essai[2]); //test : le résultat devrait être différent....
-
+                essai = essai.Remove(0, m - 1);
             }
             Console.WriteLine("Fin de la partition.");
         }
