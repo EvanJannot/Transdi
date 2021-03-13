@@ -45,14 +45,16 @@ namespace XML_Partition
             {
                 essaiBis = "";
                 int m = 0;
+                //va enregistrer les éléments de essai jusqu'à tomber sur la fermeture d'une balise qui nous intéresse (ex </mesure>) ==> essaiBis ne contiendra donc jamais deux fois un même type de balise
                 while (!essaiBis.Contains(fin) && !essaiBis.Contains(part_end) && !essaiBis.Contains(beats_end) && !essaiBis.Contains(beatType_end) && !essaiBis.Contains(sign_end) && !essaiBis.Contains(mesure_end) && !essaiBis.Contains(step_end) && !essaiBis.Contains(octave_end) && !essaiBis.Contains(type_end))
                 {
                     essaiBis += essai[m];
-                    m++;
+                    m++; //m devrait permettre de supprimer de essai tout ce qui a été enregistré puis analysé dans essaiBis, donc qui n'est plus utile de garder
                 }
 
-                Console.WriteLine("m ="+ m);
+                Console.WriteLine("m ="+ m); //test
 
+                //verification de la présence d'une ou plusieurs balises de début qui nous intéresse (ex : <mesure ...>, <beats>, ...)
                 if (essaiBis.Contains(part))
                 {
                     int index = essaiBis.IndexOf(part);
@@ -68,6 +70,7 @@ namespace XML_Partition
                     Console.WriteLine();
                     //essai.Remove(essai.IndexOf(part_end), 6); //enlève la balise de fermeture pour ne pas bloquer la boucle
                     //essai.Remove(essai.IndexOf(part), essai.IndexOf(part) + 10 + cpt); //enlève la balise de début de <part>
+                    //Je n'ai pas encore supprimé ces lignes au cas où, mais normalement elles ne serviront plus, si la ligne essai.Remove(0,m-1) à la toute fin finit par fonctionner
                 }
 
                 if (essaiBis.Contains(mesure))
@@ -187,9 +190,9 @@ namespace XML_Partition
                     //essai.Remove(essai.IndexOf(type_end), 6); //enlève la balise de fermeture pour ne pas bloquer la boucle
                     //essai.Remove(essai.IndexOf(type), 6 + cpt);
                 }
-                Console.WriteLine(" "+essai[0]+" "+essai[1]+" "+essai[2]);
+                Console.WriteLine(" "+essai[0]+" "+essai[1]+" "+essai[2]); //test
                 essai.Remove(0, m-1);
-                Console.WriteLine(" "+essai[0]+" "+essai[1]+" "+essai[2]);
+                Console.WriteLine(" "+essai[0]+" "+essai[1]+" "+essai[2]); //test : le résultat devrait être différent....
 
             }
             Console.WriteLine("Fin de la partition.");
