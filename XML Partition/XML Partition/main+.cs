@@ -37,6 +37,7 @@ namespace XML_Partition
             string type = "<type>";
             string type_end = "</type>";
             string fin = "</score-partwise>";
+            //Balises à rajouter : <divisions>, <line>, <alter>, <duration>, <voice> et <rest measure="yes"> 
 
             XmlDocument test = new XmlDocument();
             test.Load("digitalized.xml");

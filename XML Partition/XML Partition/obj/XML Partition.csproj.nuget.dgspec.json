@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ENSC 1A\\Projet Transdi\\Transcription XML\\XML Partition\\XML Partition\\XML Partition.csproj": {}
+    "D:\\ENSC 1A\\Projet Transdi\\Transdi-master ++\\Transdi-master\\XML Partition\\XML Partition\\XML Partition.csproj": {}
   },
   "projects": {
-    "D:\\ENSC 1A\\Projet Transdi\\Transcription XML\\XML Partition\\XML Partition\\XML Partition.csproj": {
+    "D:\\ENSC 1A\\Projet Transdi\\Transdi-master ++\\Transdi-master\\XML Partition\\XML Partition\\XML Partition.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ENSC 1A\\Projet Transdi\\Transcription XML\\XML Partition\\XML Partition\\XML Partition.csproj",
+        "projectUniqueName": "D:\\ENSC 1A\\Projet Transdi\\Transdi-master ++\\Transdi-master\\XML Partition\\XML Partition\\XML Partition.csproj",
         "projectName": "XML Partition",
-        "projectPath": "D:\\ENSC 1A\\Projet Transdi\\Transcription XML\\XML Partition\\XML Partition\\XML Partition.csproj",
+        "projectPath": "D:\\ENSC 1A\\Projet Transdi\\Transdi-master ++\\Transdi-master\\XML Partition\\XML Partition\\XML Partition.csproj",
         "packagesPath": "C:\\Users\\evanj\\.nuget\\packages\\",
-        "outputPath": "D:\\ENSC 1A\\Projet Transdi\\Transcription XML\\XML Partition\\XML Partition\\obj\\",
+        "outputPath": "D:\\ENSC 1A\\Projet Transdi\\Transdi-master ++\\Transdi-master\\XML Partition\\XML Partition\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\evanj\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -52,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
