@@ -37,7 +37,8 @@ namespace XML_Partition
             string type = "<type>";
             string type_end = "</type>";
             string fin = "</score-partwise>";
-            //Balises à rajouter : <divisions>, <line>, <alter>, <duration>, <voice> et <rest measure="yes"> 
+            string alter = "<alter>AccidentalTypes.";
+            string alter_end = "</alter>";
 
             XmlDocument test = new XmlDocument();
             test.Load("digitalized.xml");
@@ -100,7 +101,7 @@ namespace XML_Partition
                 essaiBis = "";
                 int m = 0;
                 //va enregistrer les éléments de essai jusqu'à tomber sur la fermeture d'une balise qui nous intéresse (ex </mesure>) ==> essaiBis ne contiendra donc jamais deux fois un même type de balise
-                while (!essaiBis.Contains(fin) && !essaiBis.Contains(part_end) && !essaiBis.Contains(beats_end) && !essaiBis.Contains(beatType_end) && !essaiBis.Contains(sign_end) && !essaiBis.Contains(mesure_end) && !essaiBis.Contains(step_end) && !essaiBis.Contains(octave_end) && !essaiBis.Contains(type_end))
+                while (!essaiBis.Contains(fin) && !essaiBis.Contains(alter_end) && !essaiBis.Contains(part_end) && !essaiBis.Contains(beats_end) && !essaiBis.Contains(beatType_end) && !essaiBis.Contains(sign_end) && !essaiBis.Contains(mesure_end) && !essaiBis.Contains(step_end) && !essaiBis.Contains(octave_end) && !essaiBis.Contains(type_end))
                 {
                     essaiBis += essai[m];
                     m++; //m permet de supprimer de essai tout ce qui a été enregistré et qui va être analysé dans essaiBis, donc qui n'est plus utile de garder dans essai
@@ -204,6 +205,32 @@ namespace XML_Partition
                     {
                         Console.Write(essaiBis[i]);
                         i++;
+                    }
+                    Console.Write(", ");
+                }
+
+                if (essaiBis.Contains(alter)) //lire l'altération de la note
+                {
+                    int index2 = essaiBis.IndexOf(alter); //lire l'altération
+                    Console.Write("Altération : ");
+                    int i2 = index2 + 23;
+                    string alteration = "";
+                    while (essaiBis[i2] != '<')
+                    {
+                        alteration += essaiBis[i2];
+                        i2++;
+                    }
+                    if (alteration == "NATURAL")
+                    {
+                        Console.Write(" bécarre");
+                    }
+                    else if (alteration == "SHARP")
+                    {
+                        Console.Write(" dièze");
+                    }
+                    else if (alteration == "FLAT")
+                    {
+                        Console.Write(" bémol");
                     }
                     Console.Write(", ");
                 }
