@@ -39,6 +39,7 @@ namespace XML_Partition
             string fin = "</score-partwise>";
             string alter = "<alter>AccidentalTypes.";
             string alter_end = "</alter>";
+            string silence = "<rest measure=\"yes\" />";
 
             XmlDocument test = new XmlDocument();
             test.Load("digitalized.xml");
@@ -101,7 +102,7 @@ namespace XML_Partition
                 essaiBis = "";
                 int m = 0;
                 //va enregistrer les éléments de essai jusqu'à tomber sur la fermeture d'une balise qui nous intéresse (ex </mesure>) ==> essaiBis ne contiendra donc jamais deux fois un même type de balise
-                while (!essaiBis.Contains(fin) && !essaiBis.Contains(alter_end) && !essaiBis.Contains(part_end) && !essaiBis.Contains(beats_end) && !essaiBis.Contains(beatType_end) && !essaiBis.Contains(sign_end) && !essaiBis.Contains(mesure_end) && !essaiBis.Contains(step_end) && !essaiBis.Contains(octave_end) && !essaiBis.Contains(type_end))
+                while (!essaiBis.Contains(fin) && !essaiBis.Contains(silence) && !essaiBis.Contains(alter_end) && !essaiBis.Contains(part_end) && !essaiBis.Contains(beats_end) && !essaiBis.Contains(beatType_end) && !essaiBis.Contains(sign_end) && !essaiBis.Contains(mesure_end) && !essaiBis.Contains(step_end) && !essaiBis.Contains(octave_end) && !essaiBis.Contains(type_end))
                 {
                     essaiBis += essai[m];
                     m++; //m permet de supprimer de essai tout ce qui a été enregistré et qui va être analysé dans essaiBis, donc qui n'est plus utile de garder dans essai
@@ -114,7 +115,7 @@ namespace XML_Partition
                 if (essaiBis.Contains(part)) //lire le nom de partie
                 {
                     int index = essaiBis.IndexOf(part);
-                    Console.Write("Lecture de la Partie ");
+                    Console.Write("\nLecture de la Partie ");
                     int i = index + 10;
                     string numero_partie = "";
                     while (essaiBis[i] != '\"') //cherche le guillemet de fin de la balise <part>
@@ -135,7 +136,7 @@ namespace XML_Partition
                 if (essaiBis.Contains(mesure))//lire le numéro de mesure
                 {
                     int index = essaiBis.IndexOf(mesure);
-                    Console.Write("Mesure numéro ");
+                    Console.Write("   Mesure numéro ");
                     int i = index + 17;
                     while (essaiBis[i] != '\"')
                     {
@@ -148,7 +149,7 @@ namespace XML_Partition
                 if (essaiBis.Contains(beats)) //lire le nombre de temps
                 {
                     int index = essaiBis.IndexOf(beats);
-                    Console.Write("Nombre de temps : ");
+                    Console.Write("      Nombre de temps : ");
                     int i = index + 7;
                     while (essaiBis[i] != '<')
                     {
@@ -160,7 +161,7 @@ namespace XML_Partition
                 if (essaiBis.Contains(beatType)) //lire le type de temps
                 {
                     int index = essaiBis.IndexOf(beatType);
-                    Console.Write("Type de temps : ");
+                    Console.Write("      Type de temps : ");
                     int i = index + 11;
                     while (essaiBis[i] != '<')
                     {
@@ -173,7 +174,7 @@ namespace XML_Partition
                 if (essaiBis.Contains(sign)) //lire la clé
                 {
                     int index = essaiBis.IndexOf(sign);
-                    Console.Write("La portée est en clé de ");
+                    Console.Write("      La portée est en clé de ");
                     int i = index + 6;
                     while (essaiBis[i] != '<')
                     {
@@ -183,10 +184,15 @@ namespace XML_Partition
                     Console.WriteLine(".");
                 }
 
+                if (essaiBis.Contains(silence)) //lire les silences, sans compter pour le moment...
+                {
+                    Console.WriteLine("      Silence");
+                }
+
                 if (essaiBis.Contains(step)) //lire le nom de la note
                 {
                     int index = essaiBis.IndexOf(step);
-                    Console.Write("Note : ");
+                    Console.Write("      Note : ");
                     int i = index + 6;
                     while (essaiBis[i] != '<')
                     {
@@ -238,7 +244,7 @@ namespace XML_Partition
                 if (essaiBis.Contains(type)) //lire le rythme de la note
                 {
                     int index = essaiBis.IndexOf(type);
-                    Console.Write("Type de rythme : ");
+                    Console.Write("Rythme : ");
                     int i = index + 6;
                     string rythme = "";
                     while (essaiBis[i] != '<')
