@@ -40,6 +40,9 @@ namespace XML_Partition
             string alter = "<alter>AccidentalTypes.";
             string alter_end = "</alter>";
             string silence = "<rest measure=\"yes\" />";
+            int current_division = 0;
+            string division = "<divisions>";
+            string division_end = "</divisions>";
 
             XmlDocument test = new XmlDocument();
             test.Load("digitalized.xml");
@@ -49,6 +52,7 @@ namespace XML_Partition
             //récupération du nombre de parties et des noms des parties
             int nb_parties = 0;
             string essai_nomsparties = "";
+            
             while (essai.Contains(part_name_end)) //chercher nb
             {
                 essaiBis = "";
@@ -66,6 +70,8 @@ namespace XML_Partition
                 }
                 essai_nomsparties += essaiBis;
             }
+            Console.Clear();
+            Console.WriteLine("\n\n");
             Console.WriteLine("La partition présente {0} parties.",nb_parties);
 
             int cpt = 1;
@@ -102,7 +108,7 @@ namespace XML_Partition
                 essaiBis = "";
                 int m = 0;
                 //va enregistrer les éléments de essai jusqu'à tomber sur la fermeture d'une balise qui nous intéresse (ex </mesure>) ==> essaiBis ne contiendra donc jamais deux fois un même type de balise
-                while (!essaiBis.Contains(fin) && !essaiBis.Contains(silence) && !essaiBis.Contains(alter_end) && !essaiBis.Contains(part_end) && !essaiBis.Contains(beats_end) && !essaiBis.Contains(beatType_end) && !essaiBis.Contains(sign_end) && !essaiBis.Contains(mesure_end) && !essaiBis.Contains(step_end) && !essaiBis.Contains(octave_end) && !essaiBis.Contains(type_end))
+                while (!essaiBis.Contains(fin) && !essaiBis.Contains(silence) && !essaiBis.Contains(division_end) && !essaiBis.Contains(alter_end) && !essaiBis.Contains(part_end) && !essaiBis.Contains(beats_end) && !essaiBis.Contains(beatType_end) && !essaiBis.Contains(sign_end) && !essaiBis.Contains(mesure_end) && !essaiBis.Contains(step_end) && !essaiBis.Contains(octave_end) && !essaiBis.Contains(type_end))
                 {
                     essaiBis += essai[m];
                     m++; //m permet de supprimer de essai tout ce qui a été enregistré et qui va être analysé dans essaiBis, donc qui n'est plus utile de garder dans essai
@@ -184,9 +190,45 @@ namespace XML_Partition
                     Console.WriteLine(".");
                 }
 
+                if (essaiBis.Contains(division))
+                {
+                    int index = essaiBis.IndexOf(division);
+                    int i = index + 11;
+                    string lecture_division = "";
+                    while (essaiBis[i] != '<')
+                    {
+                        lecture_division+=essaiBis[i];
+                        i++;
+                    }
+                    if (current_division != int.Parse(lecture_division))
+                    {
+                        current_division = int.Parse(lecture_division);
+                    }
+                }
+
                 if (essaiBis.Contains(silence)) //lire les silences, sans compter pour le moment...
                 {
-                    Console.WriteLine("      Silence");
+                    Console.Write("      Silence de ");
+                    int index_duration = 0;
+                    string lecture_duration = "";
+                    int d = 0;
+                    while (!essaiBis.Contains("</duration><voice>"))
+                    {
+                        essaiBis += essai[d];
+                        d++;
+                    }
+                    if (essaiBis.Contains("<duration>"))
+                    {
+                        index_duration = essaiBis.IndexOf("<duration>") + 10;
+                        while (essaiBis[index_duration] != '<')
+                        {
+                            lecture_duration += essaiBis[index_duration];
+                            index_duration++;
+                        }
+                        int duration = int.Parse(lecture_duration) / current_division;
+                        Console.Write("{0} temps.", duration);
+                    }
+                    Console.WriteLine();
                 }
 
                 if (essaiBis.Contains(step)) //lire le nom de la note
